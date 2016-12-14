@@ -4,6 +4,10 @@ buildDir = 'target'
 sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
 
+ext {
+	servletVersion = '3.0'
+}
+
 repositories {
     jcenter()
 }

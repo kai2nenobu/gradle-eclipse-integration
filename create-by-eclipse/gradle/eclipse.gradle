@@ -7,6 +7,11 @@ eclipse {
     classpath {
         defaultOutputDir = project.buildDir
     }
+    wtp {
+        facet {
+            facet name: 'jst.web', version: rootProject.servletVersion
+        }
+    }
 }
 
 // Eclipseの設定ファイル生成タスクを実行禁止とする
