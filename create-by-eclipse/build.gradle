@@ -1,5 +1,4 @@
 apply plugin: 'java'
-apply plugin: 'eclipse'
 
 buildDir = 'target'
 sourceCompatibility = JavaVersion.VERSION_1_7
@@ -16,16 +15,4 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-eclipse {
-    classpath {
-        defaultOutputDir = project.buildDir
-    }
-}
-
-// Eclipseの設定ファイル生成タスクを実行禁止とする
-tasks.findAll { it.name.startsWith('eclipse') }
-    .each {
-        it.doFirst {
-           throw new GradleException('設定ファイルをGradleから生成することは禁止です。Eclipseの[Gradleプロジェクトのリフレッシュ]を使用して下さい。')
-        }
-}
+apply from: 'gradle/eclipse.gradle'

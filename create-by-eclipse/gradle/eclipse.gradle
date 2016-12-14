@@ -1,0 +1,18 @@
+// このファイルではEclipse周りのビルド設定を記述する。
+//
+
+apply plugin: 'eclipse'
+
+eclipse {
+    classpath {
+        defaultOutputDir = project.buildDir
+    }
+}
+
+// Eclipseの設定ファイル生成タスクを実行禁止とする
+tasks.findAll { it.name.startsWith('eclipse') }
+    .each {
+        it.doFirst {
+           throw new GradleException('設定ファイルをGradleから生成することは禁止です。Eclipseの[Gradleプロジェクトのリフレッシュ]を使用して下さい。')
+        }
+}
