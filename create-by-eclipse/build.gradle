@@ -10,6 +10,7 @@ repositories {
 
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'
+    compile fileTree(dir: 'lib', include: '**/*.jar')
     compileOnly 'org.projectlombok:lombok:1.16.12'
 
     testCompile 'junit:junit:4.12'
