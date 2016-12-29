@@ -8,6 +8,10 @@ subprojects {
         jcenter()
     }
 
+    version = '0.0.1'
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
     dependencies {
         compile 'org.slf4j:slf4j-api:1.7.21'
         testCompile 'junit:junit:4.12'
