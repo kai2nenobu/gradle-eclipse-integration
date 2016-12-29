@@ -1,3 +1,6 @@
+ext {
+    servletVersion = '3.1'
+}
 
 subprojects {
 
@@ -19,5 +22,14 @@ subprojects {
 
     eclipse.classpath {
         pathVariables GRADLE_USER_HOME: gradle.gradleUserHomeDir
+    }
+}
+
+configure(subprojects.findAll{it.name.contains('web')}) {
+    apply plugin: 'war'
+    apply plugin: 'eclipse-wtp'
+
+    eclipse.wtp.facet{
+        facet name: 'jst.web', version: servletVersion
     }
 }
