@@ -23,7 +23,7 @@ public class HelloServlet extends HttpServlet {
 
 		String user = req.getParameter("user");
 		Greeting greeting = new Greeting();
-		String message = greeting.greet(user);
+		String message = htmlEscape(greeting.greet(user));
 
         PrintWriter writer = res.getWriter();
         writer.println("<!DOCTYPE html><html><body>");
@@ -31,4 +31,10 @@ public class HelloServlet extends HttpServlet {
         writer.print("<p>" + message + "</p>");
         writer.println("</body></html>");
     }
+
+	private String htmlEscape(String input) {
+		if (input == null) return null;
+		return input.replace("&", "&amp;").replace("\"", "&quot;").replace("<", "&lt;").replace(">", "&gt;").replace("'", "&#39;");
+	}
+
 }
