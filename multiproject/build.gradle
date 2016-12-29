@@ -33,4 +33,9 @@ configure(subprojects.findAll{it.name.contains('web')}) {
     eclipse.wtp.facet{
         facet name: 'jst.web', version: servletVersion
     }
+
+    dependencies {
+        compileOnly "javax.servlet:javax.servlet-api:${servletVersion}.0"
+    }
+
 }
