@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.example.Greeting;
+
 @WebServlet(name="HelloServlet", urlPatterns={"/hello"})
 public class HelloServlet extends HttpServlet {
 
@@ -18,10 +20,15 @@ public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
 		res.setContentType("text/html");
+
+		String user = req.getParameter("user");
+		Greeting greeting = new Greeting();
+		String message = greeting.greet(user);
+
         PrintWriter writer = res.getWriter();
         writer.println("<!DOCTYPE html><html><body>");
         writer.print("<h1>This is Sample Application</h1>");
-        writer.print("<p>it is Servlet</p>");
+        writer.print("<p>" + message + "</p>");
         writer.println("</body></html>");
     }
 }
