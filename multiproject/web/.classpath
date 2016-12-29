@@ -9,6 +9,11 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry sourcepath="GRADLE_USER_HOME/caches/modules-2/files-2.1/org.slf4j/slf4j-simple/1.7.21/58eb8609a8f14e5bbf4d260ce5f364724079227/slf4j-simple-1.7.21-sources.jar" kind="var" path="GRADLE_USER_HOME/caches/modules-2/files-2.1/org.slf4j/slf4j-simple/1.7.21/be4b3c560a37e69b6c58278116740db28832232c/slf4j-simple-1.7.21.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry sourcepath="GRADLE_USER_HOME/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar" kind="var" path="GRADLE_USER_HOME/caches/modules-2/files-2.1/junit/junit/4.12/2973d150c0dc1fefe998f834810d68f278ea58ec/junit-4.12.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
