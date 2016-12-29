@@ -5,7 +5,7 @@ ext {
 subprojects {
 
     apply plugin: 'java'
-    apply plugin: 'eclipse'
+    apply plugin: 'eclipse-wtp'
 
     repositories {
         jcenter()
@@ -28,7 +28,6 @@ subprojects {
 
 configure(subprojects.findAll{it.name.contains('web')}) {
     apply plugin: 'war'
-    apply plugin: 'eclipse-wtp'
 
     eclipse.wtp.facet{
         facet name: 'jst.web', version: servletVersion
