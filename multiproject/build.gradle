@@ -16,4 +16,8 @@ subprojects {
         compile 'org.slf4j:slf4j-api:1.7.21'
         testCompile 'junit:junit:4.12'
     }
+
+    eclipse.classpath {
+        pathVariables GRADLE_USER_HOME: gradle.gradleUserHomeDir
+    }
 }
