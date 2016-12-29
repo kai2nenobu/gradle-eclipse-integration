@@ -1,0 +1,70 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.akhikhl.gretty:gretty:1.4.0'
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+ext {
+    servletVersion = '3.1'
+}
+
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'eclipse-wtp'
+
+    repositories {
+        jcenter()
+    }
+
+    version = '0.0.1'
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+    dependencies {
+        compile 'org.slf4j:slf4j-api:1.7.21'
+        testCompile 'junit:junit:4.12'
+    }
+
+    eclipse.classpath {
+        pathVariables GRADLE_USER_HOME: gradle.gradleUserHomeDir
+    }
+}
+
+configure(subprojects.findAll{it.name.contains('web')}) {
+    apply plugin: 'war'
+    apply plugin: 'org.akhikhl.gretty'
+
+    eclipse.wtp.facet{
+        facet name: 'jst.web', version: servletVersion
+    }
+
+    dependencies {
+        compile project(':share')
+        compileOnly "javax.servlet:javax.servlet-api:${servletVersion}.0"
+        runtime 'ch.qos.logback:logback-parent:1.1.8'
+    }
+
+}
+
+configure(subprojects.findAll{it.name.contains('web')} + rootProject) {
+    apply plugin: 'org.akhikhl.gretty'
+
+    gretty {
+        servletContainer = 'tomcat8'
+        managedClassReload = true
+        onScanFilesChanged { files ->
+            def fileNames = files.collect { it.toString() - rootProject.projectDir }
+                                 .join(', ')
+            println("${fileNames} has changed!")
+        }
+    }
+}
